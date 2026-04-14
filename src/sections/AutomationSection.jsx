@@ -53,16 +53,21 @@ function curvedPath(from, to, curve = 52) {
 
 function AutomationSection() {
   return (
-    <section id="automation" className="relative py-24 bg-brand-surface overflow-hidden">
+    <section id="automation" className="relative py-24 bg-[#F0EBE1] overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid-large" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
       </div>
 
       {/* Accent glow */}
       <div className="absolute bottom-1/3 left-0 w-96 h-96 rounded-full blur-3xl opacity-10"
         style={{
           background: 'radial-gradient(circle, #0ea5e9 0%, transparent 70%)',
+        }}
+      />
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+        style={{
+          background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)',
         }}
       />
 
@@ -73,14 +78,14 @@ function AutomationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center md:text-left"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-text mb-4">
-            <span className="bg-gradient-to-r from-brand-accent to-brand-electric bg-clip-text text-transparent">
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-4 pb-2 tracking-tight">
+            <span className="bg-gradient-to-r from-[#2563eb] to-[#0ea5e9] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]">
               Intelligent Automation Architecture
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl">
+          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
             Real-time data flow from field devices through PLC logic, SCADA orchestration, to remote telemetry—engineered for zero-downtime operations.
           </p>
         </MotionDiv>
@@ -93,12 +98,16 @@ function AutomationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl border border-brand-border bg-brand-panel/50 backdrop-blur-sm p-8 overflow-hidden"
+            className="rounded-[2rem] border border-white/50 bg-white/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(30,64,175,0.08)] p-8 overflow-hidden"
           >
-            <h3 className="text-xl font-bold text-brand-text mb-8 flex items-center gap-3">
-              <div className="w-1 h-6 bg-gradient-to-b from-brand-accent to-transparent" />
-              Data Flow Architecture
-            </h3>
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-12 h-12 rounded-xl bg-white/50 backdrop-blur-md border border-white/60 flex items-center justify-center shadow-sm">
+                <Workflow size={24} className="text-brand-accent drop-shadow-sm" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-text tracking-tight">
+                Data Flow Architecture
+              </h3>
+            </div>
 
             <svg viewBox="0 0 790 320" className="w-full h-auto">
               <defs>
@@ -192,6 +201,12 @@ function AutomationSection() {
                       fill="#06b6d4"
                       opacity="0.15"
                     />
+                    {/* Actual Node Icon Rendered via ForeignObject */}
+                    <foreignObject x={node.x - 12} y={node.y - 12} width="24" height="24">
+                      <div className="flex w-full h-full items-center justify-center text-[#38bdf8] drop-shadow-md animate-pulse duration-1000">
+                        <Icon size={15} strokeWidth={2.5} />
+                      </div>
+                    </foreignObject>
                   </g>
                 )
               })}
@@ -209,7 +224,7 @@ function AutomationSection() {
                     transition={{ delay: 0.2 }}
                     className="text-center"
                   >
-                    <p className="text-xs font-bold text-brand-accent uppercase tracking-wide">{node.label}</p>
+                    <p className="text-xs font-bold text-brand-accent uppercase tracking-wide drop-shadow-sm">{node.label}</p>
                     <p className="text-xs text-brand-muted mt-1">{node.desc}</p>
                   </MotionDiv>
                 ))}
@@ -226,11 +241,15 @@ function AutomationSection() {
             className="space-y-6"
           >
             {/* Capabilities */}
-            <div className="rounded-2xl border border-brand-border bg-brand-panel/50 backdrop-blur-sm p-8">
-              <h3 className="text-xl font-bold text-brand-text mb-6 flex items-center gap-2">
-                <Zap size={20} className="text-brand-accent" />
-                Core Capabilities
-              </h3>
+            <div className="rounded-[2rem] border border-white/50 bg-white/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(30,64,175,0.08)] p-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-white/50 backdrop-blur-md border border-white/60 flex items-center justify-center shadow-sm">
+                  <Zap size={24} className="text-brand-accent drop-shadow-sm" />
+                </div>
+                <h3 className="text-2xl font-bold text-brand-text tracking-tight">
+                  Core Capabilities
+                </h3>
+              </div>
               <ul className="space-y-3">
                 {automationCapabilities.map((item, i) => (
                   <MotionDiv
@@ -239,29 +258,33 @@ function AutomationSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-3 p-3 rounded-lg border border-brand-border/30 hover:border-brand-accent/40 transition-colors duration-300"
+                    className="flex items-start gap-4 p-4 rounded-xl border border-brand-border/30 bg-white/50 hover:bg-white hover:border-brand-accent/40 shadow-sm transition-all duration-300"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand-accent mt-2 flex-shrink-0" />
-                    <span className="text-sm text-brand-text">{item}</span>
+                    <div className="w-2 h-2 rounded-full bg-brand-accent mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+                    <span className="text-sm text-brand-text font-medium">{item}</span>
                   </MotionDiv>
                 ))}
               </ul>
             </div>
 
             {/* Protocol Stack */}
-            <div className="rounded-2xl border border-brand-border bg-brand-panel/50 backdrop-blur-sm p-8">
-              <h3 className="text-xl font-bold text-brand-text mb-6 flex items-center gap-2">
-                <Radio size={20} className="text-brand-electric" />
-                Protocol Standards
-              </h3>
+            <div className="rounded-[2rem] border border-white/50 bg-white/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(30,64,175,0.08)] p-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-white/50 backdrop-blur-md border border-white/60 flex items-center justify-center shadow-sm">
+                  <Radio size={24} className="text-brand-electric drop-shadow-sm" />
+                </div>
+                <h3 className="text-2xl font-bold text-brand-text tracking-tight">
+                  Protocol Standards
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-3">
                 {protocols.map((protocol) => (
                   <MotionDiv
                     key={protocol}
-                    whileHover={{ scale: 1.05, borderColor: 'rgba(6, 182, 212, 0.8)' }}
-                    className="px-4 py-2.5 rounded-lg border border-brand-accent/30 bg-brand-accent/10 hover:bg-brand-accent/20 transition-all cursor-pointer"
+                    whileHover={{ scale: 1.05, borderColor: 'rgba(59,130,246,0.5)', backgroundColor: 'rgba(255,255,255,1)' }}
+                    className="px-5 py-2.5 rounded-xl border border-white/80 bg-white/60 hover:bg-white transition-all cursor-pointer shadow-sm backdrop-blur-md"
                   >
-                    <span className="text-sm font-semibold text-brand-accent uppercase tracking-wide">{protocol}</span>
+                    <span className="text-sm font-bold text-brand-accent uppercase tracking-wide drop-shadow-sm">{protocol}</span>
                   </MotionDiv>
                 ))}
               </div>

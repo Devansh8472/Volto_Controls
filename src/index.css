@@ -6,10 +6,10 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --site-max-width: 1240px;
-  --section-space: clamp(5.5rem, 11vw, 8.5rem);
-  --section-space-tight: clamp(4.5rem, 8.5vw, 6.5rem);
+  --section-space: clamp(6.5rem, 12vw, 10rem);
+  --section-space-tight: clamp(5rem, 9vw, 7rem);
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 240ms;
   --dur-medium: 520ms;
@@ -31,11 +31,14 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Satoshi, Inter, sans-serif;
-  background: #0a0e14;
-  color: #e8eef7;
+  background: linear-gradient(120deg, #f5f9ff 0%, #eef4ff 100%);
+  color: #0f172a;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background-image: var(--blueprint-grid, none), var(--tech-texture, none);
+  background-size: 32px 32px, auto;
+  background-blend-mode: lighten;
 }
 
 #root {
@@ -43,8 +46,8 @@ body {
 }
 
 ::selection {
-  background: rgba(6, 182, 212, 0.3);
-  color: #06b6d4;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1e40af;
 }
 
 @layer components {
@@ -66,7 +69,7 @@ body {
   }
 
   .glass-card {
-    @apply border border-brand-border bg-brand-panel/50 backdrop-blur-sm shadow-[0_4px_24px_rgba(6,182,212,0.04)];
+    @apply border border-brand-border bg-white/70 backdrop-blur-md shadow-card;
     transition:
       transform var(--dur-medium) var(--ease-premium),
       border-color var(--dur-fast) var(--ease-premium),
@@ -76,7 +79,7 @@ body {
   }
   
   .glass-card:hover {
-    @apply border-brand-accent/40 bg-brand-panel/80 shadow-glow -translate-y-1;
+    @apply border-brand-accent/40 bg-white/90 shadow-glow-cyan -translate-y-1;
   }
 
   .hover-lift {
@@ -137,7 +140,7 @@ body {
   }
 
   .premium-secondary-btn {
-    @apply inline-flex items-center justify-center rounded-lg border border-brand-border bg-brand-panel/50 text-xs font-semibold uppercase tracking-[0.2em] text-brand-text backdrop-blur-sm;
+    @apply inline-flex items-center justify-center rounded-lg border border-brand-border bg-white/70 text-xs font-semibold uppercase tracking-[0.2em] text-brand-text backdrop-blur-md;
     transition:
       transform var(--dur-medium) var(--ease-premium),
       border-color var(--dur-fast) var(--ease-premium),
@@ -148,7 +151,7 @@ body {
 
   .premium-secondary-btn:hover {
     transform: translate3d(0, -3px, 0);
-    @apply border-brand-accent/50 bg-brand-panel/80 shadow-glow;
+    @apply border-brand-accent/50 bg-white/90 shadow-glow-cyan;
   }
 
   .glow-ring {

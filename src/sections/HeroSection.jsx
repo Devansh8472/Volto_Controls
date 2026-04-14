@@ -11,25 +11,40 @@ function HeroSection() {
   ]
 
   return (
-    <section id="hero" className="relative w-full min-h-screen bg-brand-bg overflow-hidden">
-      {/* Dynamic Background Grid */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid-small" />
+    <section id="hero" className="relative w-full min-h-screen overflow-hidden bg-brand-surface">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Semi-transparent overlay to ensure text readability & cool-blue theme */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f5f9ff]/40 to-[#eef4ff]/60 backdrop-blur-[1px]" />
       </div>
 
-      {/* Radial Glow Effect (top-right) */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl opacity-20"
-        style={{
-          background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)',
-        }}
+      {/* Premium Blueprint Grid + Soft Tech Texture */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-blueprint-grid opacity-20 animate-fade-in mix-blend-multiply" />
+        <div className="absolute inset-0 bg-tech-texture opacity-10" />
+      </div>
+
+      {/* Soft Blue Radial Gradients */}
+      <div className="absolute -top-40 -right-40 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-20"
+        style={{ background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)' }}
+      />
+      <div className="absolute -bottom-40 -left-40 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-15"
+        style={{ background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)' }}
       />
 
-      {/* Radial Glow Effect (bottom-left) */}
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full blur-3xl opacity-15"
-        style={{
-          background: 'radial-gradient(circle, #0ea5e9 0%, transparent 70%)',
-        }}
-      />
+      {/* Animated Light Rays (subtle) */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-1/2 top-0 w-[120vw] h-[60vh] -translate-x-1/2 bg-gradient-to-br from-blue-100/40 via-transparent to-transparent blur-2xl animate-pulse-slow" />
+      </div>
 
       <div className="relative z-10">
         {/* Hero Content */}
@@ -40,26 +55,27 @@ function HeroSection() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-3xl"
           >
+            {/* Main Headline / Hero Logo */}
+            <div className="mb-6 block">
+              <div className="inline-block rounded-[2.25rem] bg-white/20 backdrop-blur-xl border border-white/40 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.15)] p-5 transition-all duration-500 hover:bg-white/30 hover:backdrop-blur-2xl">
+                <img 
+                  src="/volto-logo-hero.png" 
+                  alt="Volto Control" 
+                  className="rounded-2xl h-20 sm:h-28 lg:h-36 w-auto object-contain opacity-95 drop-shadow-md"
+                />
+              </div>
+            </div>
+
             {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-border bg-brand-panel/40 backdrop-blur-md mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-border bg-white/70 backdrop-blur-md mb-8 shadow-card"
             >
               <Zap size={16} className="text-brand-accent" />
               <span className="text-sm font-medium text-brand-text">Industrial Intelligence Platform</span>
             </motion.div>
-
-            {/* Main Headline */}
-            <h1 className="font-display text-5xl lg:text-6xl font-bold leading-tight text-brand-text mb-6">
-              Engineered for
-              <span className="block mt-2">
-                <span className="bg-gradient-to-r from-brand-accent to-brand-electric bg-clip-text text-transparent">
-                  Precision at Scale
-                </span>
-              </span>
-            </h1>
 
             {/* Subheadline */}
             <p className="text-lg lg:text-xl text-brand-muted mb-8 leading-relaxed max-w-2xl">
@@ -69,21 +85,21 @@ function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-16">
               <motion.button
-                whileHover={{ scale: 1.02, boxShadow: '0 0 48px rgba(6, 182, 212, 0.3)' }}
+                whileHover={{ scale: 1.04, boxShadow: '0 0 32px #3b82f6aa' }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-electric text-brand-bg font-semibold rounded-lg flex items-center justify-center gap-2 shadow-glow-electric transition-all duration-300"
+                className="px-8 py-4 bg-gradient-to-r from-brand-accent to-brand-accentDeep text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-glow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-accent/40"
               >
                 Explore Solutions
                 <ChevronRight size={18} />
               </motion.button>
               <motion.button
                 whileHover={{ 
-                  scale: 1.02,
-                  borderColor: 'rgba(6, 182, 212, 0.8)',
-                  backgroundColor: 'rgba(6, 182, 212, 0.05)'
+                  scale: 1.04,
+                  borderColor: '#3b82f6',
+                  backgroundColor: 'rgba(59, 130, 246, 0.07)'
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border border-brand-border rounded-lg text-brand-text font-semibold hover:border-brand-accent transition-all duration-300"
+                className="px-8 py-4 border border-brand-border rounded-xl text-brand-accent font-semibold hover:border-brand-accent transition-all duration-300 bg-white/80 backdrop-blur-md"
               >
                 Book Consultation
               </motion.button>
@@ -101,9 +117,9 @@ function HeroSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
-                  className="flex items-start gap-4 p-4 rounded-lg border border-brand-border/30 bg-brand-panel/20 backdrop-blur-sm hover:bg-brand-panel/40 transition-all duration-300"
+                  className="flex items-start gap-4 p-5 rounded-2xl border border-brand-border bg-white/70 backdrop-blur-md shadow-card hover:shadow-glow-cyan hover:border-brand-accent transition-all duration-300"
                 >
-                  <div className="p-3 rounded-lg bg-brand-accent/10 text-brand-accent">
+                  <div className="p-3 rounded-xl bg-brand-accent/10 text-brand-accent">
                     <Icon size={24} />
                   </div>
                   <div>

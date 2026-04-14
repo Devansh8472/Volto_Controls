@@ -15,10 +15,10 @@ function curvedLink(from, to, depth = 52) {
 
 function GlobalPresenceSection() {
   return (
-    <section id="global" className="relative py-24 bg-brand-bg overflow-hidden">
+    <section id="global" className="relative py-24 bg-[#F6F4EB] overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid-large" />
+      <div className="absolute inset-0 opacity-[0.15]">
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
       </div>
 
       {/* Glow elements */}
@@ -40,20 +40,20 @@ function GlobalPresenceSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 max-w-3xl"
+          className="mb-16 text-center md:text-left"
         >
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
             <div className="p-2 rounded-lg bg-brand-accent/10 border border-brand-accent/30">
               <Globe size={20} className="text-brand-accent" />
             </div>
             <span className="text-sm font-semibold text-brand-accent uppercase tracking-wider">Global Footprint</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-text mb-4">
-            <span className="bg-gradient-to-r from-brand-accent to-brand-electric bg-clip-text text-transparent">
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-4 pb-2 tracking-tight">
+            <span className="bg-gradient-to-r from-[#2563eb] to-[#0ea5e9] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]">
               Multi-Regional Delivery Network
             </span>
           </h2>
-          <p className="text-lg text-brand-muted">
+          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
             Engineering support and active deployment infrastructure across South Asia, Middle East, and Africa—enabling rapid response and localized expertise.
           </p>
         </MotionDiv>

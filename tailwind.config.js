@@ -4,24 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark Industrial Palette
+        // Premium White + Cool Blue Palette
         brand: {
-          // Primary dark colors
-          bg: '#0a0e14', // Deep black
-          surface: '#0f1419', // Slightly lighter black
-          panel: '#13171f', // Dark graphite
-          border: '#1e262f', // Dark steel
-          
+          // Backgrounds
+          bg: '#ffffff', // Pure white
+          surface: '#f5f9ff', // Light blue tint
+          surfaceAlt: '#eef4ff', // Alternate light blue
+          border: '#e2e8f0', // Very light blue-gray
+
           // Text
-          text: '#e8eef7', // Light grayish white
-          muted: '#8b92a5', // Medium gray
-          secondary: '#6b7280', // Darker gray
-          
-          // Tech accents
-          accent: '#06b6d4', // Bright cyan
-          electric: '#0ea5e9', // Electric blue
-          steel: '#64748b', // Steel gray
-          
+          text: '#0f172a', // Dark navy
+          muted: '#475569', // Muted slate
+          secondary: '#64748b', // Subtle slate
+
+          // Accents
+          accent: '#3b82f6', // Cool blue
+          accentDeep: '#1e40af', // Deep blue
+          cyanGlow: '#06b6d4', // Cyan glow
+
           // Utilities
           success: '#10b981',
           danger: '#ef4444',
@@ -45,17 +45,19 @@ export default {
         '5xl': ['56px', '64px'],
       },
       boxShadow: {
-        glow: '0 0 32px rgba(6, 182, 212, 0.2)',
-        'glow-electric': '0 0 48px rgba(14, 165, 233, 0.25)',
-        'glow-subtle': '0 0 16px rgba(6, 182, 212, 0.1)',
-        panel: '0 20px 60px rgba(0, 0, 0, 0.4)',
-        'panel-lg': '0 40px 100px rgba(0, 0, 0, 0.5)',
-        'inner-glow': 'inset 0 0 32px rgba(6, 182, 212, 0.05)',
+        glow: '0 0 32px rgba(59, 130, 246, 0.12)', // soft blue glow
+        'glow-cyan': '0 0 32px 0 rgba(6, 182, 212, 0.18)',
+        'glow-subtle': '0 0 16px rgba(59, 130, 246, 0.08)',
+        card: '0 4px 32px 0 rgba(30, 64, 175, 0.08)',
+        panel: '0 8px 32px 0 rgba(30, 64, 175, 0.10)',
+        'inner-glow': 'inset 0 0 32px rgba(59, 130, 246, 0.06)',
       },
       backgroundImage: {
-        'panel-grad': 'linear-gradient(135deg, #13171f 0%, #0f1419 100%)',
-        'grid-pattern': 'linear-gradient(90deg, rgba(30, 38, 47, 0.2) 1px, transparent 1px), linear-gradient(rgba(30, 38, 47, 0.2) 1px, transparent 1px)',
-        'pulse-grad': 'linear-gradient(90deg, #06b6d4 0%, #0ea5e9 50%, #06b6d4 100%)',
+        'hero-gradient': 'linear-gradient(120deg, #f5f9ff 0%, #eef4ff 100%)',
+        'blueprint-grid': 'repeating-linear-gradient(0deg, #e2e8f0 0 1px, transparent 1px 32px), repeating-linear-gradient(90deg, #e2e8f0 0 1px, transparent 1px 32px)',
+        'radial-blue': 'radial-gradient(circle at 60% 40%, #3b82f6 0%, #eef4ff 100%)',
+        'card-glass': 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(245,249,255,0.8) 100%)',
+        'tech-texture': 'url(/src/assets/tech-texture.svg)',
       },
       backgroundSize: {
         'grid-small': '40px 40px',

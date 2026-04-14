@@ -78,18 +78,12 @@ const industryStyles = {
 
 function IndustriesSection() {
   return (
-    <section id="industries" className="relative py-24 bg-brand-bg overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid-large" />
+    <section id="industries" className="relative py-24 bg-[#F2E8E5] overflow-hidden">
+      {/* Blueprint grid + soft radial */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.15]">
+        <div className="absolute inset-0 bg-blueprint-grid opacity-10 mix-blend-multiply" />
+        <div className="absolute top-1/2 -right-40 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-10" style={{ background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)' }} />
       </div>
-
-      {/* Glow accents */}
-      <div className="absolute top-1/2 -right-40 w-96 h-96 rounded-full blur-3xl opacity-10"
-        style={{
-          background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)',
-        }}
-      />
 
       <div className="site-container relative z-10">
         {/* Header */}
@@ -98,24 +92,23 @@ function IndustriesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 max-w-3xl"
+          className="mb-16 text-center md:text-left"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-text mb-4">
-            <span className="bg-gradient-to-r from-brand-accent to-brand-electric bg-clip-text text-transparent">
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-4 pb-2 tracking-tight">
+            <span className="bg-gradient-to-r from-[#2563eb] to-[#0ea5e9] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]">
               Industry-Specific Expertise
             </span>
           </h2>
-          <p className="text-lg text-brand-muted">
+          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
             Process-critical automation solutions engineered for the unique demands of manufacturing, energy, and facility control across diverse industrial sectors.
           </p>
         </MotionArticle>
 
         {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {industries.map((industry, index) => {
             const Icon = iconMap[industry.icon]
             const styles = industryStyles[industry.name] || industryStyles['Packaging and Paper']
-            
             return (
               <MotionArticle
                 key={industry.name}
@@ -123,8 +116,8 @@ function IndustriesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.06 }}
-                whileHover={{ y: -4 }}
-                className={`group relative rounded-2xl border ${styles.borderColor} bg-gradient-to-br ${styles.bgGradient} backdrop-blur-sm p-8 overflow-hidden transition-all duration-300 ${styles.hoverBg} hover:border-opacity-100 hover:shadow-glow`}
+                whileHover={{ y: -6, boxShadow: '0 0 32px #3b82f633' }}
+                className={`group relative rounded-2xl border border-brand-border bg-card-glass backdrop-blur-md p-8 overflow-hidden transition-all duration-300 hover:shadow-glow-cyan hover:border-brand-accent/70`}
               >
                 {/* Top accent bar */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

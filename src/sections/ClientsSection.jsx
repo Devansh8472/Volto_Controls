@@ -1,148 +1,166 @@
 import { motion } from 'framer-motion'
-import { Award, Check, Shield, TrendingUp } from 'lucide-react'
-import { clientSectors } from '../data/siteContent'
 
-const MotionDiv = motion.div
-
-const credibilityMetrics = [
-  { value: '5000+', label: 'Systems Deployed', icon: TrendingUp },
-  { value: '99.8%', label: 'Uptime Record', icon: Shield },
-  { value: '25 Years', label: 'Industry Leadership', icon: Award },
-  { value: '600+', label: 'Major Projects', icon: Check },
+const clientsList = [
+  { name: 'Patanjali', domain: 'patanjaliayurved.net' },
+  { name: 'Coca-Cola', domain: 'coca-cola.com' },
+  { name: 'Mother Dairy', domain: 'motherdairy.com' },
+  { name: 'Parle Agro', domain: 'parleagro.com' },
+  { name: 'Cadbury', domain: 'cadbury.com' },
+  { name: 'Pearl Dairy', domain: 'pearldairy.com' },
+  { name: 'Food & Biotech Engineers', domain: 'fbeindia.com' },
+  { name: 'Britannia', domain: 'britannia.co.in' },
+  { name: 'Tang', domain: 'mondelezinternational.com' },
+  { name: 'Unilever', domain: 'unilever.com' },
+  { name: 'Amul', domain: 'amul.com' },
+  { name: 'Trigonal Mobering', domain: 'trigonal.in' },
+  { name: 'Horlicks', domain: 'horlicks.in' },
+  { name: 'Kissan', domain: 'kissan.in' },
+  { name: 'Alchem', domain: 'alchem.com' },
+  { name: 'Parico India', domain: 'parico.in' },
+  { name: 'Parsons', domain: 'parsons.com' },
+  { name: 'Bajaj Hindusthan Ltd', domain: 'bajajhindusthan.com' },
 ]
 
-function LogoMark({ name }) {
-  const initials = name
-    .split(' ')
-    .map((part) => part[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase()
+const productPartnersList = [
+  { name: 'Siemens', domain: 'siemens.com' },
+  { name: 'Schneider Electric', domain: 'se.com' },
+  { name: 'Danfoss', domain: 'danfoss.com' },
+  { name: 'Delta', domain: 'deltaww.com' },
+  { name: 'Fuji Electric', domain: 'fujielectric.com' },
+  { name: 'Mitsubishi Electric', domain: 'mitsubishielectric.com' },
+  { name: 'Yaskawa', domain: 'yaskawa.com' },
+  { name: 'ABB', domain: 'abb.com' },
+  { name: 'Allen-Bradley', domain: 'rockwellautomation.com' },
+]
+
+const processPartnersList = [
+  { name: 'Yokogawa', domain: 'yokogawa.com' },
+  { name: 'Endress+Hauser', domain: 'endress.com' },
+  { name: 'CHINO', domain: 'chino.co.jp' },
+  { name: 'ABB', domain: 'abb.com' },
+]
+
+function ScrollingRow({ items, title, subtitle, duration, reverse = false }) {
+  // Ensure we have a thick robust loop so that there is no empty space.
+  const trackItems = [...items, ...items, ...items, ...items]
 
   return (
-    <span className="inline-flex size-14 items-center justify-center rounded-xl border border-brand-accent/30 bg-brand-accent/10 text-sm font-bold tracking-wider text-brand-accent group-hover:border-brand-accent/60 group-hover:bg-brand-accent/20 transition-all duration-300">
-      {initials}
-    </span>
+    <div className="w-full">
+      <div className="flex flex-col items-center justify-center mb-8 px-4 text-center">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#334155] tracking-tight">{title}</h3>
+        {subtitle && (
+          <p className="mt-3 text-xs md:text-sm font-bold tracking-[0.15em] text-[#1e88e5] uppercase bg-[#1e88e5]/10 px-5 py-1.5 rounded-full border border-[#1e88e5]/20 shadow-sm">
+            {subtitle}
+          </p>
+        )}
+      </div>
+
+      <div className="relative w-full overflow-hidden flex items-center h-[120px] md:h-[140px]">
+        {/* Soft edge gradients to mask the scroll entry/exit */}
+        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          animate={{ x: reverse ? ['-50%', '0%'] : ['0%', '-50%'] }}
+          transition={{ ease: 'linear', duration, repeat: Infinity }}
+          className="flex whitespace-nowrap items-center w-max py-2"
+        >
+          {trackItems.map((item, idx) => (
+            <div
+              key={`${item.name}-${idx}`}
+              className="inline-flex items-center justify-start mx-3 md:mx-4 w-[280px] md:w-[340px] px-6 h-[80px] md:h-[100px] rounded-2xl bg-white shadow-[0_4px_16px_rgba(30,64,175,0.05)] border border-[#e2e8f0] hover:shadow-[0_8px_24px_rgba(30,136,229,0.15)] hover:border-[#1e88e5]/40 transition-all duration-300 group hover:scale-[1.04]"
+            >
+              <img
+                src={`https://logo.clearbit.com/${item.domain}`}
+                alt={item.name}
+                loading="lazy"
+                className="w-10 h-10 md:w-14 md:h-14 object-contain mr-5 transition-transform duration-300 group-hover:scale-110 drop-shadow-sm flex-shrink-0"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+              <span className="whitespace-normal break-words text-sm md:text-base font-bold text-[#475569] leading-tight">
+                {item.name}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
   )
 }
 
 function ClientsSection() {
   return (
-    <section id="clients" className="relative py-24 bg-brand-surface overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid-large" />
+    <section id="clients-partners" className="relative py-28 bg-[#E8EDE3] overflow-hidden">
+      {/* Light subtle textured background */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
       </div>
-
-      {/* Glow */}
-      <div className="absolute -top-40 left-1/3 w-96 h-96 rounded-full blur-3xl opacity-10"
-        style={{
-          background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)',
-        }}
-      />
 
       <div className="site-container relative z-10">
         {/* Header */}
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 max-w-3xl"
+          className="mb-20 text-center flex flex-col items-center"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-brand-text mb-4">
-            <span className="bg-gradient-to-r from-brand-accent to-brand-electric bg-clip-text text-transparent">
-              Trusted by Leaders
+          <div className="w-16 h-1 bg-[#1e88e5] rounded-full mb-6" />
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-4 pb-2 tracking-tight">
+            <span className="bg-gradient-to-r from-[#1e88e5] to-[#0ea5e9] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(30,136,229,0.3)]">
+              Trusted by Industry Leaders
             </span>
           </h2>
-          <p className="text-lg text-brand-muted">
-            Partnering with industry leaders across manufacturing, supply, and critical infrastructure sectors where reliability is non-negotiable.
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
+            Empowering the world's finest brands with robust product integration and cutting-edge process automation.
           </p>
-        </MotionDiv>
+        </motion.div>
 
-        {/* Credibility Metrics */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+        {/* Marquee Grids */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="space-y-12 md:space-y-16"
         >
-          {credibilityMetrics.map((metric, i) => {
-            const Icon = metric.icon
-            return (
-              <MotionDiv
-                key={metric.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="rounded-2xl border border-brand-border bg-brand-panel/50 backdrop-blur-sm p-7 hover:bg-brand-panel/70 transition-colors duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 rounded-lg bg-brand-accent/10">
-                    <Icon size={20} className="text-brand-accent" />
-                  </div>
-                  <span className="text-xs font-mono text-brand-muted/60">0{i + 1}</span>
-                </div>
-                <p className="text-3xl font-bold text-brand-accent mb-2">{metric.value}</p>
-                <p className="text-sm text-brand-muted">{metric.label}</p>
-              </MotionDiv>
-            )
-          })}
-        </div>
+          {/* Few Of Our Clients */}
+          <ScrollingRow 
+            items={clientsList} 
+            title="Few of Our Clients" 
+            duration={70} 
+            reverse={false} 
+          />
 
-        {/* Client Sectors Carousel */}
-        <div>
-          <h3 className="text-2xl font-bold text-brand-text mb-8 flex items-center gap-3">
-            <div className="w-1 h-8 bg-gradient-to-b from-brand-accent to-transparent rounded-full" />
-            Served Sectors
-          </h3>
-
-          <div className="relative rounded-2xl border border-brand-border bg-brand-panel/30 backdrop-blur-sm overflow-hidden">
-            <div className="flex overflow-x-auto gap-4 p-8 sm:p-10 scrollbar-hide">
-              {clientSectors.map((client, index) => (
-                <motion.div
-                  key={`${client.name}-${index}`}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (index % 6) * 0.05 }}
-                  className="group flex-shrink-0 flex items-center gap-4 rounded-xl border border-brand-border/50 bg-brand-panel/60 hover:bg-brand-panel hover:border-brand-accent/40 transition-all duration-300 px-6 py-4"
-                >
-                  <LogoMark name={client.name} />
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-brand-text truncate">
-                      {client.name}
-                    </p>
-                    <p className="text-xs text-brand-muted mt-1">
-                      {client.type}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Gradient fade */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-brand-surface via-brand-surface/50 to-transparent pointer-events-none" />
+          {/* Elegant Divider */}
+          <div className="w-full flex justify-center">
+            <div className="w-2/3 max-w-xl border-t border-slate-200" />
           </div>
-        </div>
 
-        {/* Certification Badges */}
-        <div className="mt-16 pt-16 border-t border-brand-border/30">
-          <h3 className="text-xl font-bold text-brand-text mb-8">Industry Certifications & Standards</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            {['ISO 9001', 'CE Certified', 'IEC 61010', 'NEMA Rated', 'UL Listed', 'RoHS'].map((cert, i) => (
-              <motion.div
-                key={cert}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="rounded-xl border border-brand-border/50 bg-brand-accent/5 p-4 text-center hover:bg-brand-accent/10 transition-colors duration-300"
-              >
-                <Shield size={20} className="mx-auto text-brand-accent mb-2" />
-                <p className="text-xs font-semibold text-brand-text">{cert}</p>
-              </motion.div>
-            ))}
+          {/* Product Integration */}
+          <ScrollingRow 
+            items={productPartnersList} 
+            title="Product Integration" 
+            subtitle="VFD, Soft Starter, PLC & SCADA" 
+            duration={45} 
+            reverse={true} 
+          />
+
+          {/* Elegant Divider */}
+          <div className="w-full flex justify-center">
+            <div className="w-1/3 max-w-md border-t border-slate-200" />
           </div>
-        </div>
+
+          {/* Process Automation */}
+          <ScrollingRow 
+            items={processPartnersList} 
+            title="Process Automation" 
+            duration={35} 
+            reverse={false} 
+          />
+        </motion.div>
       </div>
     </section>
   )
