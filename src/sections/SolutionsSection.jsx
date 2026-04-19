@@ -65,9 +65,9 @@ const SolutionCard = ({ solution, delay, isSupply, index }) => {
 
 function SolutionsSection() {
   return (
-    <section id="solutions" className="relative py-24 bg-brand-surface overflow-hidden">
+    <section id="solutions" className="relative py-24 bg-gradient-to-br from-[#f0fdf4] via-[#dcfce7] to-[#bbf7d0] overflow-hidden">
       {/* Premium Blueprint Grid */}
-      <div className="absolute inset-0 z-0 bg-blueprint-grid opacity-[0.15] mix-blend-multiply" />
+      <div className="absolute inset-0 z-0 bg-blueprint-grid opacity-[0.08] mix-blend-multiply" />
 
       {/* Accent glow */}
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full blur-3xl opacity-10"
@@ -90,7 +90,7 @@ function SolutionsSection() {
               Complete Solution Portfolio
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto md:mx-0">
             Manufacturing-grade electrical systems and industrial automation components built for reliability, performance, and scale.
           </p>
         </MotionDiv>

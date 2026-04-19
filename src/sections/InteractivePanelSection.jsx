@@ -78,17 +78,13 @@ const RelayMatrix = ({ className = '' }) => (
       <linearGradient id="relayBg" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stopColor="#f8fafc" />
         <stop offset="100%" stopColor="#e2e8f0" />
-      <section
-        id="interactive-panel"
-        ref={sectionRef}
-        className="section-shell relative bg-gradient-to-b from-white via-brand-surfaceAlt to-white overflow-hidden"
-      >
-        {/* Blueprint grid + soft radial gradients */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-blueprint-grid opacity-10" />
-          <div className="absolute left-[5%] top-1/4 h-96 w-96 rounded-full bg-blue-200/20 blur-3xl" />
-          <div className="absolute bottom-1/4 right-[5%] h-96 w-96 rounded-full bg-cyan-200/15 blur-3xl" />
-        </div>
+      </linearGradient>
+    </defs>
+    <rect width="600" height="400" fill="url(#relayBg)" stroke="#cbd5e1" strokeWidth="2" rx="4" />
+    
+    {/* Relay modules */}
+    {[0, 1, 2, 3, 4, 5].map((i) => (
+      <g key={`relay-${i}`}>
         {/* Coil */}
         <rect x={45 + i * 95} y="50" width="50" height="35" rx="2" fill="#f1f5f9" stroke="#cbd5e1" strokeWidth="1" />
         <text x={70 + i * 95} y="72" fontSize="8" fill="#0f172a" textAnchor="middle" fontWeight="bold">
@@ -105,7 +101,6 @@ const RelayMatrix = ({ className = '' }) => (
         
         {/* Status LED */}
         <circle cx={50 + i * 95} cy="145" r="4" fill="none" stroke="#06b6d4" strokeWidth="1.5" />
-                className="relative w-full max-w-4xl aspect-[4/3] rounded-2xl border border-brand-border bg-card-glass shadow-panel overflow-hidden"
       </g>
     ))}
   </svg>
@@ -312,7 +307,7 @@ function InteractivePanelSection() {
     <section
       id="interactive-panel"
       ref={sectionRef}
-      className="section-shell relative bg-gradient-to-b from-white via-brand-panel to-white overflow-hidden"
+      className="section-shell relative bg-gradient-to-b from-[#f0f9ff] via-[#e0f2fe] to-[#bae6fd] overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[5%] top-1/4 h-96 w-96 rounded-full bg-blue-200/20 blur-3xl" />

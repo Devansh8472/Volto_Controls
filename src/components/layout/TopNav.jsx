@@ -3,7 +3,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const links = [
   { href: '#solutions', label: 'Solutions' },
-  { href: '#automation', label: 'Automation' },
+  { href: '#products', label: 'Products' },
   { href: '#industries', label: 'Industries' },
   { href: '#quality', label: 'Quality' },
   { href: '#contact', label: 'Contact' },

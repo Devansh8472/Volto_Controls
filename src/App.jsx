@@ -24,7 +24,7 @@ function SectionFallback({ height = 420 }) {
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-brand-bg text-brand-text">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#0d1714] via-[#111c18] to-[#24121b] text-brand-text">
       <TopNav />
       <main className="relative overflow-hidden">
         <Suspense fallback={<SectionFallback height="100vh" />}>

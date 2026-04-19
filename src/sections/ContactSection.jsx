@@ -91,7 +91,7 @@ function ContactSection() {
   const isFormValid = selectedDate && selectedTime && formData.name && formData.email
 
   return (
-    <section id="contact" className="relative py-24 bg-[#F5F2EA] overflow-hidden">
+    <section id="contact" className="relative py-24 bg-gradient-to-br from-[#fdf4ff] via-[#fae8ff] to-[#f3e8ff] overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.13]">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
@@ -129,7 +129,7 @@ function ContactSection() {
               Schedule Your Discovery Session
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto md:mx-0">
             Meet with our engineering team to discuss your automation needs and explore customized solutions for your facility.
           </p>
         </div>

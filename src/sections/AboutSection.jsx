@@ -12,9 +12,9 @@ const MotionDiv = motion.div
 
 function AboutSection() {
   return (
-    <section id="about" className="relative py-24 bg-[#EDEBE6] overflow-hidden">
+    <section id="about" className="relative py-24 bg-gradient-to-br from-[#f8fafb] via-[#f1f5f9] to-[#e2e8f0] overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
       </div>
 
@@ -41,7 +41,7 @@ function AboutSection() {
               </span>
             </h2>
 
-            <p className="text-lg text-brand-muted mb-8 leading-relaxed">
+            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
               Volto Control LLP combines 20+ years of engineering expertise with a strong multidisciplinary team to deliver dependable electrical and automation ecosystems for mission-critical plants. We design with precision, build to last, and support until success.
             </p>
 

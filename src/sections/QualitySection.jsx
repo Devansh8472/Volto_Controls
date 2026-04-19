@@ -15,7 +15,7 @@ const stepIcons = [
 
 function QualitySection() {
   return (
-    <section id="quality" className="relative py-24 bg-[#EFE6E1] overflow-hidden">
+    <section id="quality" className="relative py-24 bg-gradient-to-br from-[#faf5ff] via-[#f3e8ff] to-[#e9d5ff] overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.25]">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
@@ -42,7 +42,7 @@ function QualitySection() {
               Rigorous Quality Pipeline
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto md:mx-0">
             Every system passes through a comprehensive testing sequence—from raw materials to final validation—ensuring zero-compromise reliability.
           </p>
         </MotionDiv>

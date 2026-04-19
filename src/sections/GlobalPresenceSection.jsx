@@ -15,7 +15,7 @@ function curvedLink(from, to, depth = 52) {
 
 function GlobalPresenceSection() {
   return (
-    <section id="global" className="relative py-24 bg-[#F6F4EB] overflow-hidden">
+    <section id="global" className="relative py-24 bg-gradient-to-br from-[#ecfdf5] via-[#d1fae5] to-[#a7f3d0] overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.15]">
         <div className="absolute inset-0 bg-grid-pattern bg-grid-large mix-blend-multiply" />
@@ -53,7 +53,7 @@ function GlobalPresenceSection() {
               Multi-Regional Delivery Network
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto md:mx-0">
             Engineering support and active deployment infrastructure across South Asia, Middle East, and Africa—enabling rapid response and localized expertise.
           </p>
         </MotionDiv>

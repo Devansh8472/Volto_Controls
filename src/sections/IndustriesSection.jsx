@@ -78,7 +78,7 @@ const industryStyles = {
 
 function IndustriesSection() {
   return (
-    <section id="industries" className="relative py-24 bg-[#F2E8E5] overflow-hidden">
+    <section id="industries" className="relative py-24 bg-gradient-to-br from-[#fef2f2] via-[#fee2e2] to-[#fecaca] overflow-hidden">
       {/* Blueprint grid + soft radial */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.15]">
         <div className="absolute inset-0 bg-blueprint-grid opacity-10 mix-blend-multiply" />
@@ -99,7 +99,7 @@ function IndustriesSection() {
               Industry-Specific Expertise
             </span>
           </h2>
-          <p className="text-lg text-brand-muted max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto md:mx-0">
             Process-critical automation solutions engineered for the unique demands of manufacturing, energy, and facility control across diverse industrial sectors.
           </p>
         </MotionArticle>
